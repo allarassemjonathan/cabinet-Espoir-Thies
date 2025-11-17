@@ -213,6 +213,23 @@
   .carousel-indicator.active {
     background:#fff;
   }
+    .top-header {
+    display:flex; align-items:center;
+    padding:20px 40px; background:#fff; position:relative; z-index:20;
+  }
+  .logo-container {
+    width:150px; height:150px; margin-right:15px;
+  }
+  .logo-container img {
+    width:100%; height:100%; object-fit:contain;
+  }
+  .menu-circle {
+    width:70px; height:70px; border-radius:50%;
+    background:#0a2e6c; display:flex; align-items:center; justify-content:center;
+    margin-right:25px; cursor:pointer;
+  }
+  #menuIcon { color:#fff; font-size:34px; user-select:none; }
+  .clinic-title { font-size:2.8rem; color:#0a2e6c; font-weight:500; }
 
   @media (max-width:480px) {
     .clinic-title { font-size:1.6rem; }
@@ -243,7 +260,7 @@
   <div class="logo-container">
     <img src="https://allarassemjonathan.github.io/logo_espoir.png" alt="Clinique Espoir Logo">
   </div>
-  <div class="clinic-title">Clinique Espoir</div>
+  <!-- <div class="clinic-title">Clinique Espoir</div> -->
 </header>
 
   <div class="divider"></div>
