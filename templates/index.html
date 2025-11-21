@@ -10,7 +10,7 @@
 
   .top-header {
     display:flex; align-items:center;
-    padding:20px 40px; background:#fff; position:relative; z-index:20;
+    padding:0px 0px; background:#fff; position:relative; z-index:20;
   }
   .menu-circle {
     width:70px; height:70px; border-radius:50%;
@@ -21,7 +21,7 @@
   .clinic-title { font-size:2.8rem; color:#0a2e6c; font-weight:500; }
 
   .divider { height:1px; background:#ddd; width:100%; }
-  .nav-tabs { text-align:center; padding:12px; background:#f9f9f9; color:#0a2e6c; font-weight:700; }
+  .nav-tabs { text-align:center; padding:5px; background:#f9f9f9; color:#0a2e6c; font-weight:700; }
 
   .sidebar {
     position:fixed; top:0; left:0;
@@ -215,10 +215,10 @@
   }
     .top-header {
     display:flex; align-items:center;
-    padding:20px 40px; background:#fff; position:relative; z-index:20;
+    padding:5px 10px; background:#fff; position:relative; z-index:20; height:80px;
   }
   .logo-container {
-    width:150px; height:150px; margin-right:15px;
+    width:80px; height:80px; margin-left:10px;
   }
   .logo-container img {
     width:100%; height:100%; object-fit:contain;
@@ -230,7 +230,69 @@
   }
   #menuIcon { color:#fff; font-size:34px; user-select:none; }
   .clinic-title { font-size:2.8rem; color:#0a2e6c; font-weight:500; }
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.65);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
 
+.modal-box {
+    background: #fff;
+    width: 90%;
+    max-width: 380px;
+    padding: 25px;
+    border-radius: 12px;
+    text-align: center;
+    animation: fadeIn 0.25s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity:0; transform:scale(0.9); }
+    to { opacity:1; transform:scale(1); }
+}
+
+.modal-box h3 {
+    font-size: 1.4rem;
+    margin-bottom: 10px;
+    color: #0a2e6c;
+}
+
+.modal-box p {
+    color: #444;
+    margin-bottom: 20px;
+}
+
+.modal-actions {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.btn-cancel {
+    padding: 10px 18px;
+    border: none;
+    border-radius: 6px;
+    background: #bdc3c7;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.btn-delete {
+    padding: 10px 18px;
+    border-radius: 6px;
+    background: #c0392b;
+    color: white !important;
+    text-decoration: none;
+    font-weight: 600;
+}
   @media (max-width:480px) {
     .clinic-title { font-size:1.6rem; }
     .menu-circle { width:56px; height:56px; }
@@ -249,6 +311,7 @@
   <aside class="sidebar" id="sidebar" aria-hidden="true" role="navigation">
     <div class="menu-header">MAIN MENU</div>
     <div class="menu-item" data-target="home">Home</div>
+    <div class="menu-item" data-target="posts">Manage Posts</div>
     <div class="menu-item" data-target="location">Emplacement</div>
     <div class="menu-item" data-target="services">Services Médicaux et Soins</div>
     <div class="menu-item" data-target="community">Community Health</div>
@@ -258,7 +321,9 @@
 
   <header class="top-header">
   <div class="logo-container">
-    <img src="https://allarassemjonathan.github.io/logo_espoir.png" alt="Clinique Espoir Logo">
+    <a href="#">
+      <img src="https://allarassemjonathan.github.io/logo_espoir_better.png" alt="Clinique Espoir Logo">
+    </a>
   </div>
   <!-- <div class="clinic-title">Clinique Espoir</div> -->
 </header>
@@ -286,7 +351,7 @@
   <section class="cards-container">
     <div class="cards-grid">
       <div class="card" data-target="services">
-        <img src="https://allarassemjonathan.github.io/espoir_pp_med_writing.jpg" alt="Medical Services" class="card-image">
+        <img src="https://allarassemjonathan.github.io/espoir_pp_attente_autre.jpg" alt="Medical Services" class="card-image">
         <div class="card-content">
           <h3 class="card-title">Services Médicaux et Soins</h3>
           <p class="card-description">Apprendre plus sur nos services</p>
@@ -295,7 +360,7 @@
       </div>
 
       <div class="card" data-target="visit">
-        <img src="https://allarassemjonathan.github.io/espoir_pp_med_writing2.jpg" alt="Your Visit" class="card-image">
+        <img src="https://allarassemjonathan.github.io/espoir_pp_med_writing.jpg" alt="Your Visit" class="card-image">
         <div class="card-content">
           <h3 class="card-title">Notre équipe</h3>
           <p class="card-description">Une équipe d'experts consacrée à votre service.</p>
@@ -308,6 +373,16 @@
         <div class="card-content">
           <h3 class="card-title">Emplacement et Directions</h3>
           <p class="card-description">Thiès Ouest, derrière la mosquée Grand-Standing.</p>
+          <span class="card-arrow">↗</span>
+        </div>
+      </div>
+
+      <div class="card" data-target="publications">
+        <img src="https://allarassemjonathan.github.io/espoir_pp_med_writing2.jpg" 
+            alt="Publications" class="card-image">
+        <div class="card-content">
+          <h3 class="card-title">Publications</h3>
+          <p class="card-description">Lire nos mises à jour & articles</p>
           <span class="card-arrow">↗</span>
         </div>
       </div>
@@ -331,6 +406,66 @@
       </a>
     </div>
   </section>
+<section class="section" id="publications" style="display:none;">
+    <h2>Publications</h2>
+    <p style="font-size:1.15rem; margin-bottom:30px; color:#555;">
+        Découvrez les dernières publications de la Clinique Espoir.
+    </p>
+
+    <!-- Posts List -->
+    <div id="posts-list">
+        {% for post in posts %}
+        <div style="
+            background:#fff;
+            padding:20px;
+            border-radius:10px;
+            margin-bottom:20px;
+            box-shadow:0 2px 8px rgba(0, 0, 0, 0.1);
+        ">
+            <h3 style="color:#0a2e6c; margin-bottom:10px;">{{post['title']}}</h3>
+            <p style="color:#555;">{{ post['content'] }}</p>
+            <hr style="margin:15px 0;">
+
+            <a href="/edit_post/{{ post['id'] }}" 
+               style="color:#0a2e6c; margin-right:15px; text-decoration:none; font-weight:600;">
+               Modifier 
+            </a>
+
+            <a href="#" 
+              class="delete-btn"
+              data-id="{{ post['id'] }}" 
+              style="color:#c0392b; text-decoration:none; font-weight:600;">
+              Supprimer
+            </a>
+        </div>
+        {% endfor %}
+    </div>
+
+    <!-- Add New Post -->
+    <div style="
+        background:#eef5ff;
+        padding:25px;
+        border-radius:10px;
+        margin-top:40px;
+    ">
+        <h3 style="color:#0a2e6c;">Ajouter une nouvelle publication</h3>
+
+        <form action="/add_post" method="POST" style="margin-top:20px;">
+            <input type="text" name="title" placeholder="Titre" required
+                   style="width:100%; padding:12px; margin-bottom:15px; border-radius:6px; border:1px solid #ccc;">
+
+            <textarea name="content" placeholder="Contenu" required
+                      style="width:100%; padding:12px; height:120px; border-radius:6px; border:1px solid #ccc;"></textarea>
+
+            <button type="button" onclick="openPasswordModal()"
+                style="margin-top:15px; padding:12px 20px; background:#0a2e6c; color:white;
+                      border:none; border-radius:6px; font-size:1rem; cursor:pointer;">
+                Publier
+            </button>
+
+        </form>
+    </div>
+</section>
 
 <section class="section" id="services" style="display:none;">
     <h2>Services Médicaux et Soins</h2>
@@ -446,102 +581,159 @@
     </div>
   </section>
 
+<!-- Password Popup -->
+<div id="passwordModal" class="modal-overlay" style="display:none;">
+  <div class="modal-box">
+      <h3>Mot de passe requis</h3>
+      <p>Veuillez entrer le mot de passe pour publier une nouvelle publication.</p>
+
+      <input type="password" id="postPassword"
+             placeholder="Mot de passe"
+             style="width:100%; padding:12px; margin-bottom:15px; border:1px solid #ccc; border-radius:6px;">
+
+      <div class="modal-actions">
+          <button class="btn-cancel" onclick="closePasswordModal()">Annuler</button>
+          <button class="btn-delete" onclick="validatePostPassword()">Continuer</button>
+      </div>
+  </div>
+</div>
+
+<!-- DELETE CONFIRMATION MODAL -->
+<div id="deleteModal" class="modal-overlay" style="display:none;">
+    <div class="modal-box">
+        <h3>Supprimer cette publication ?</h3>
+        <p>Cette action est irréversible.</p>
+
+        <div class="modal-actions">
+            <button id="cancelDelete" class="btn-cancel">Annuler</button>
+            <a id="confirmDelete" href="#" class="btn-delete">Supprimer</a>
+        </div>
+    </div>
+</div>
+
 <script>
-  document.addEventListener('DOMContentLoaded', function () {
-    const body = document.body;
-    const sidebar = document.getElementById('sidebar');
-    const backdrop = document.getElementById('backdrop');
-    const menuIcon = document.getElementById('menuIcon');
-    const menuButton = document.getElementById('menuButton');
+  /* TOGGLE EDIT FORM */
+function toggleEditForm(id) {
+  const form = document.getElementById("editForm-" + id);
+  form.style.display = form.style.display === "none" ? "block" : "none";
+}
 
-    sidebar.classList.remove('open');
-    backdrop.classList.remove('show');
+/* MENU TOGGLE */
+function toggleMenu() {
+  const sidebar = document.getElementById("sidebar");
+  const backdrop = document.getElementById("backdrop");
 
-    requestAnimationFrame(() => body.classList.add('loaded'));
+  sidebar.classList.toggle("open");
+  backdrop.classList.toggle("show");
+}
 
-    window.toggleMenu = function () {
-      const opened = sidebar.classList.toggle('open');
-      if (opened) {
-        backdrop.classList.add('show');
-        menuIcon.textContent = '×';
-        menuButton.setAttribute('aria-expanded', 'true');
-      } else {
-        backdrop.classList.remove('show');
-        menuIcon.textContent = '≡';
-        menuButton.setAttribute('aria-expanded', 'false');
-      }
-    };
+/* CLOSE MENU WHEN CLICKING A MENU ITEM */
+document.querySelectorAll(".menu-item").forEach(item => {
+  item.addEventListener("click", () => {
+    const target = item.getAttribute("data-target");
+    showSection(target);
 
-    menuButton.onclick = (e) => {
-      e.preventDefault();
-      toggleMenu();
-    };
-
-    // Handle menu item clicks
-    document.querySelectorAll(".menu-item").forEach(item => {
-      item.addEventListener("click", () => {
-        const targetId = item.dataset.target;
-        toggleMenu();
-        setTimeout(() => {
-          const targetEl = document.getElementById(targetId);
-          if (targetEl) {
-            if (targetEl.style.display === 'none') {
-              document.querySelectorAll('.section').forEach(s => s.style.display = 'none');
-              targetEl.style.display = 'block';
-            }
-            targetEl.scrollIntoView({ behavior:"smooth" });
-          }
-        }, 250);
-      });
-    });
-
-    // Handle card clicks
-    document.querySelectorAll(".card").forEach(card => {
-      card.addEventListener("click", () => {
-        const targetId = card.dataset.target;
-        const targetEl = document.getElementById(targetId);
-        if (targetEl) {
-          document.querySelectorAll('.section').forEach(s => s.style.display = 'none');
-          targetEl.style.display = 'block';
-          setTimeout(() => {
-            targetEl.scrollIntoView({ behavior:"smooth" });
-          }, 50);
-        }
-      });
-    });
-
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && sidebar.classList.contains('open')) toggleMenu();
-    });
+    toggleMenu();
   });
-  
-  // Carousel functionality
-  let currentSlide = 0;
-  const slides = document.querySelectorAll('.carousel-item');
-  const indicators = document.querySelectorAll('.carousel-indicator');
+});
 
-  function showSlide(n) {
-    slides.forEach(slide => slide.classList.remove('active'));
-    indicators.forEach(indicator => indicator.classList.remove('active'));
-    
-    currentSlide = (n + slides.length) % slides.length;
-    
-    slides[currentSlide].classList.add('active');
-    indicators[currentSlide].classList.add('active');
+/* CARD CLICK -> OPEN SECTION */
+document.querySelectorAll(".card").forEach(card => {
+  card.addEventListener("click", () => {
+    const target = card.getAttribute("data-target");
+    showSection(target);
+  });
+});
+
+/* SHOW / HIDE SECTIONS */
+function showSection(id) {
+  document.querySelectorAll(".section").forEach(sec => {
+    sec.style.display = "none";
+  });
+
+  const targetSection = document.getElementById(id);
+  if (targetSection) {
+    targetSection.style.display = "block";
+    targetSection.scrollIntoView({ behavior: "smooth" });
   }
+}
 
-  function changeSlide(direction) {
-    showSlide(currentSlide + direction);
-  }
+/* CAROUSEL */
+let currentSlide = 0;
 
-  function goToSlide(n) {
-    showSlide(n);
-  }
+function showSlide(n) {
+  const slides = document.querySelectorAll(".carousel-item");
+  const indicators = document.querySelectorAll(".carousel-indicator");
 
-  // Auto-advance carousel every 5 seconds
-  setInterval(() => {
-    changeSlide(1);
-  }, 5000);
+  if (n >= slides.length) currentSlide = 0;
+  else if (n < 0) currentSlide = slides.length - 1;
+  else currentSlide = n;
+
+  slides.forEach((slide, index) => {
+    slide.classList.toggle("active", index === currentSlide);
+  });
+
+  indicators.forEach((dot, index) => {
+    dot.classList.toggle("active", index === currentSlide);
+  });
+}
+
+function changeSlide(n) {
+  showSlide(currentSlide + n);
+}
+
+function goToSlide(n) {
+  showSlide(n);
+}
+
+let deleteModal = document.getElementById('deleteModal');
+let confirmDelete = document.getElementById('confirmDelete');
+let cancelDelete = document.getElementById('cancelDelete');
+
+// When user clicks "Supprimer"
+document.querySelectorAll('.delete-btn').forEach(btn => {
+    btn.addEventListener('click', function(e) {
+        e.preventDefault();
+        let id = this.getAttribute('data-id');
+
+        confirmDelete.href = "/delete_post/" + id;
+        deleteModal.style.display = "flex";
+    });
+});
+
+// Cancel button closes the modal
+cancelDelete.addEventListener('click', function() {
+    deleteModal.style.display = "none";
+});
+
+// Clicking outside closes modal
+deleteModal.addEventListener('click', function(e) {
+    if (e.target === deleteModal) {
+        deleteModal.style.display = "none";
+    }
+});
+
+const correctPassword = "cliniqueespoir2025";  // <-- CHANGE THIS
+
+function openPasswordModal() {
+    document.getElementById("passwordModal").style.display = "flex";
+}
+
+function closePasswordModal() {
+    document.getElementById("passwordModal").style.display = "none";
+}
+
+function validatePostPassword() {
+    let entered = document.getElementById("postPassword").value;
+
+    if (entered === correctPassword) {
+        // Submit the add_post form
+        document.querySelector("form[action='/add_post']").submit();
+    } else {
+        alert("Mot de passe incorrect.");
+    }
+}
 </script>
+
 </body>
 </html>
